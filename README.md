@@ -2,7 +2,7 @@
 # Siguria e internetit
 Ky është Projekti në lëndën Siguria në Internet!
 
-                                             KEYLOGGER
+                                                               KEYLOGGER
 
 
 ❂ Një keylogger është një lloj softueri që regjistron çelësat që janë shtypur në një tastierë. Keyloggerët përdoren shpesh nga sulmuesit për të kapur informacione të   ndjeshme, të tilla si fjalëkalimet dhe numrat e kartave të kreditit, duke monitoruar goditjet e tasteve të viktimës. Ato mund të përdoren gjithashtu nga punëdhënësit   për të monitoruar aktivitetin e punonjësve të tyre, ose nga prindërit për të monitoruar aktivitetin e fëmijëve të tyre.
