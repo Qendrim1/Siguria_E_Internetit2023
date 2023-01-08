@@ -47,4 +47,4 @@ def write_file(qelesat):
 				file.write(k)
 				
 with Listener(on_press=on_press) as listener:
-	listener.json()
+	listener.join()
