@@ -6,7 +6,7 @@ from pynput.keyboard import Listener as KeyboardListener
 
 qelesat = []
 numerimi = 0
-# path=os.environ['appdata'] +\\'porcessmenager.txt'
+# path=os.environ['appdata'] +'\\tekst.txt'
 path = 'tekst.txt'
 
 
