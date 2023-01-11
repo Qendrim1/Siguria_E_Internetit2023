@@ -13,11 +13,13 @@ def pathi(arg):
     if arg == "Windows":
         path = os.environ['appdata'] + '\\tekst.txt'
     elif arg == "Linux":
-        app_datapath = os.path.join(os.path.expanduser("~"), ".config", "appdata")
-        path = os.path.join(app_datapath, "tekst.txt")
+        path =  "tekst.txt"
     elif arg == "macOS":
         app_datapath = os.path.join(os.path.expanduser("~"), "Library", "Application Support")
         path = os.path.join(app_datapath, "tekst.txt")
+    else : 
+	path="teksti.txt"
+	
     return path
 
 pathi_final = pathi(platform.system())
